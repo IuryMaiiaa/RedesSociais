@@ -5,6 +5,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.sql.Time;
+import java.util.ArrayList;
 import java.util.Iterator;
 
 import javax.swing.plaf.SliderUI;
@@ -26,6 +27,49 @@ public class ReadFiles {
 	public static void main(String[] args) {
 		BufferedReader br = null;
 		int cont;
+		
+		ArrayList<String> coluna1 =  new ArrayList<String>();
+		ArrayList<String> coluna2 =  new ArrayList<String>();
+		ArrayList<String> palavras =  new ArrayList<String>();
+		
+		palavras.add(HanSolo);
+		palavras.add(KyloRen);
+		palavras.add(LeiaOrgana);
+		palavras.add(Rey);
+		
+		coluna1.add(HanSolo);
+		coluna2.add(KyloRen);
+		
+		coluna1.add(LeiaOrgana);
+		coluna2.add(Rey);
+		
+		coluna1.add(HanSolo);
+		coluna2.add(LeiaOrgana);
+		
+		coluna1.add(LeiaOrgana);
+		coluna2.add(KyloRen);
+		
+		coluna1.add(HanSolo);
+		coluna2.add(KyloRen);
+		
+		coluna1.add(HanSolo);
+		coluna2.add(KyloRen);
+		
+		coluna1.add(HanSolo);
+		coluna2.add(KyloRen);
+		
+		coluna1.add(LeiaOrgana);
+		coluna2.add(KyloRen);
+		coluna1.add(LeiaOrgana);
+		coluna2.add(KyloRen);
+		coluna1.add(LeiaOrgana);
+		coluna2.add(KyloRen);
+		coluna1.add(LeiaOrgana);
+		coluna2.add(KyloRen);
+		
+		
+		writingCSVFile wfile = new writingCSVFile();
+		wfile.writeCsvFile(coluna1, coluna2,palavras);
 
 		try {
 			cont=0;
