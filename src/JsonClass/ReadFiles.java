@@ -19,10 +19,18 @@ public class ReadFiles {
 	public String Rey = "Rey";
 	public String Finn = "Finn";
 	public String PoeDameron = "Poe Dameron";
+	public String Chewbacca = "Chewbacca";
+	public String R2d2 = "R2-D2";
+	public String C3po = "C3-PO";
+	public String Phasma = "Phasma";
+	public String Maz = "Maz Kanata";
+	public String Snoke = "Snoke";
+	public String Hux = "Hux";
 	
 	public ArrayList<String> palavras = new ArrayList<String>();
 	public ArrayList<String> coluna1 = new ArrayList<String> ();
 	public ArrayList<String> coluna2 = new ArrayList<String> ();
+	public ArrayList<Peso> relacoes = new ArrayList<Peso> ();
 	
 	public void popula(){
 	this.palavras.add(this.HanSolo);
@@ -32,6 +40,13 @@ public class ReadFiles {
 	this.palavras.add(this.Leia);
 	this.palavras.add(this.PoeDameron);
 	this.palavras.add(this.Rey);
+	this.palavras.add(this.Chewbacca);
+	this.palavras.add(this.R2d2);
+	this.palavras.add(this.C3po);
+	this.palavras.add(this.Phasma);
+	this.palavras.add(this.Maz);
+	this.palavras.add(this.Snoke);
+	this.palavras.add(this.Hux);
 	}
 	
 	public void encontraLigacao(String twitter) {
@@ -43,13 +58,36 @@ public class ReadFiles {
 				for (int j = 0; j < mencoes.size(); j++) {
 					if (twitter.contains(mencoes.get(j))){
 						coluna1.add(palavras.get(i).toString());
-						coluna2.add(mencoes.get(j).toString());
-						 
+						coluna2.add(mencoes.get(j).toString());						 
 					}
 				}
 			}
+		}	
+	}
+	
+	public void calculaPeso(ArrayList<String> coluna1, ArrayList<String> coluna2){
+		Peso aux = new Peso();
+		for (int i=0; i<coluna1.size(); i++){
+			for (int j=0; j<this.relacoes.size(); j++){
+				aux = this.relacoes.get(j);
+				if (coluna1.get(i).equals(aux.coluna1)){
+					if (coluna2.get(i).equals(aux.coluna2)){
+						aux.weight++;
+					}
+				}
+				else if (coluna1.get(i).equals(aux.coluna2)){
+					if (coluna2.get(i).equals(aux.coluna1)){
+						aux.weight++;
+					}
+				}
+				else {
+					aux.coluna1 = coluna1.get(i);
+					aux.coluna2 = coluna2.get(i);
+					aux.weight = 1;
+					}
+			}
+			relacoes.add(aux);
 		}
-		
 	}
 	
 	public static void main(String[] args) {

@@ -9,7 +9,7 @@ public class writingCSVFile {
 	// Delimiter used in CSV file
 	static final String COMMA_DELIMITER = ",";
 	
-	private static final String fileName = "C:\\Python27\\trabalhoRedesSociais\\data\\starWarsGhapsData.gdf";
+	private static final String fileName = "C:\\Users\\Lie\\Dropbox\\2015.2\\Redes Sociais\\trabalho1\\starWarsGhapsData.gdf";
 
 	private static final String NEW_LINE_SEPARATOR = "\n";
 
