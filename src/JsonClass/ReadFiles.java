@@ -68,24 +68,16 @@ public class ReadFiles {
 	public void calculaPeso(ArrayList<String> coluna1, ArrayList<String> coluna2){
 		Peso aux = new Peso();
 		for (int i=0; i<coluna1.size(); i++){
-			for (int j=0; j<this.relacoes.size(); j++){
-				aux = this.relacoes.get(j);
-				if (coluna1.get(i).equals(aux.coluna1)){
-					if (coluna2.get(i).equals(aux.coluna2)){
-						aux.weight++;
+			aux = new Peso();
+			for (int j=0; j<coluna1.size(); j++){
+				if (coluna1.get(j).equals(coluna1.get(i))){
+					if (coluna2.get(j).equals(coluna2.get(i))){
+						aux.valor++;
 					}
 				}
-				else if (coluna1.get(i).equals(aux.coluna2)){
-					if (coluna2.get(i).equals(aux.coluna1)){
-						aux.weight++;
-					}
-				}
-				else {
-					aux.coluna1 = coluna1.get(i);
-					aux.coluna2 = coluna2.get(i);
-					aux.weight = 1;
-					}
 			}
+			aux.coluna1 = coluna1.get(i);
+			aux.coluna2 = coluna2.get(i);
 			relacoes.add(aux);
 		}
 	}
@@ -126,6 +118,8 @@ public class ReadFiles {
 					cont = 0;
 				}
 			}
+			rf.calculaPeso(rf.coluna1, rf.coluna2);
+		//	System.out.println(rf.relacoes.get(10));
 			wfile .writeCsvFile(rf.coluna1, rf.coluna2,rf.palavras);
 
 		} catch (FileNotFoundException e) {
